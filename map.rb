@@ -1,5 +1,5 @@
 class Map
-  CHIP_SIZE = 32 
+  CHIP_SIZE = 50
   def initialize(map_data_path)
     @map_data = []
     File.open(map_data_path) do |f|
@@ -10,7 +10,7 @@ class Map
     @block_img = Image.load("images/blue.png")
     @bonus_img = Image.load("images/green.png")
     @goal_img = Image.load("images/red.png")
-    @white_img =  Image.load("images/white.jpg")
+    @white_img = Image.load("images/white.jpg")
   end
 
   def update

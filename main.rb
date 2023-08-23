@@ -15,10 +15,10 @@ map = Map.new("mapdata/map.dat")
 # ※ 座標系をマップ座標系に変更
 characters = []
 # characters << Navigator.new("COM4", 1, 1, Image.load("images/navigator.png"))
-s = Sprite.new(100, 100, Image.new(100, 100, C_WHITE))
+# s = Sprite.new(100, 100, Image.new(100, 100, C_WHITE))
 
 Window.loop do
-  s.draw
+ # s.draw
   break if Input.key_push?(K_ESCAPE)
 
   map.update
