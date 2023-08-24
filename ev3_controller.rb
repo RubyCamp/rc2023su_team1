@@ -2,7 +2,7 @@ class EV3Controller
   COLOR_SENSOR = "3"
   LEFT_MOTOR = "C"
   RIGHT_MOTOR = "B"
-  MOTOR_SPEED = 50
+  MOTOR_SPEED = 25
 
   def initialize(port = "COM4")
     @motors = [LEFT_MOTOR, RIGHT_MOTOR]
@@ -14,21 +14,30 @@ class EV3Controller
   end
 
   def move_forward(sec, speed = MOTOR_SPEED)
-    @brick.start(speed, *@motors)
-    sleep sec
+    count = sec * 60
+    while count != 0
+      @brick.start(speed, *@motors)
+      count -= 1
+    end
     @brick.stop(true, *@motors)
   end
 
   # 以下追加コード 左,右,後進
   def move_lefturn(sec, speed = MOTOR_SPEED)
-    @brick.start(speed, *@motors[0])
-    sleep sec
+    count = sec * 60
+    while count != 0
+      @brick.start(speed, *@motors[0])
+      count -= 1
+    end
     @brick.stop(true, *@motors[0])
   end
 
   def move_righturn(sec, speed = MOTOR_SPEED)
-    @brick.start(speed, *@motors[1])
-    sleep sec
+    count = sec * 60
+    while count != 0
+      @brick.start(speed, *@motors[1])
+      count -= 1
+    end
     @brick.stop(true, *@motors[1])
   end
 
@@ -36,8 +45,11 @@ class EV3Controller
   def move_backward(sec, speed = MOTOR_SPEED)
     # モーター反転
     @brick.reverse_polarity(*@motors)
-    @brick.start(speed, *@motors)
-    sleep sec
+    count = sec * 60
+    while count != 0
+      @brick.start(speed, *@motors)
+      count -= 1
+    end
     @brick.stop(true, *@motors)
     # モーター元に戻す
     @brick.run_forward(*@motors)
@@ -46,9 +58,12 @@ class EV3Controller
 
   # 以下追加コード ちょっとだけ動く(ジグザグ,停止)
   def move_zigzag(sec, speed = MOTOR_SPEED)
-    @brick.reverse_polarity(LEFT_MOTOR)
-    @brick.start(MOTOR_SPEED, *@motors)
-    sleep sec
+    @brick.reverse_polarity(RIGHT_MOTOR)
+    count = sec * 60
+    while count != 0
+      @brick.start(MOTOR_SPEED, *@motors)
+      count -= 1
+    end
     @brick.stop(false, *@motors)
     @brick.run_forward(*@motors)
   end
