@@ -14,7 +14,7 @@ map = Map.new("map_data/map.dat")
 
 # ※ 座標系をマップ座標系に変更
 characters = []
-# characters << Navigator.new("COM4", 1, 1, Image.load("images/navigator.png"))
+characters << Player.new("COM6", 1, 1, Image.load("images/navigator.png"))
 
 Window.loop do
   break if Input.key_push?(K_ESCAPE)
