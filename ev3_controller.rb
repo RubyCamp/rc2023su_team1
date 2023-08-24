@@ -2,7 +2,7 @@ class EV3Controller
   COLOR_SENSOR = "3"
   LEFT_MOTOR = "C"
   RIGHT_MOTOR = "B"
-  MOTOR_SPEED = 50
+  MOTOR_SPEED = 25
 
   def initialize(port = "COM4")
     @motors = [LEFT_MOTOR, RIGHT_MOTOR]

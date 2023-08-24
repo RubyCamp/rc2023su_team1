@@ -15,16 +15,16 @@ class Player < Character
         @ev3_controller.stop(1.0)
       when 1.0 then # 少し右に曲がる
         puts "黒色"
-        @ev3_controller.move_zigzag(0.15)
+        @ev3_controller.move_zigzag(0.2)
       when 2.0 then # 止まってちょっと下がる？
         puts "青色" 
-        @ev3_controller.move_backward(0.1)
+        @ev3_controller.move_backward(0.2)
       when 5.0 then # ゴールなのでストップ
         puts "赤色"
         @ev3_controller.stop(0.2)
       when 6.0 then # 前に進む
         puts "白色"
-        @ev3_controller.move_forward(0.1)
+        @ev3_controller.move_forward(0.2)
     end
     # ここまで
 
